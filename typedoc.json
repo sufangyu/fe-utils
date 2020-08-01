@@ -1,0 +1,7 @@
+{
+  "mode": "modules",
+  "out": "docs",
+  "inputFiles": ["./src"],
+  "exclude": ["./src/index.ts", "./tests/*.spec.ts", "./tests/*.test.ts"],
+  "plugin": ["typedoc-plugin-external-module-name"]
+}
