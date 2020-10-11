@@ -1,4 +1,4 @@
-import { sliceArray,sliceArrayCompleteLength } from '../../src/array';
+import { sliceArray,sliceArrayCompleteLength } from '../../src';
 
 
 describe('数组:', () => {
