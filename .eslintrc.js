@@ -16,5 +16,7 @@ module.exports = {
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "rules": {}
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
+  }
 };

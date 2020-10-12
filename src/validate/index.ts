@@ -32,6 +32,7 @@ export function isMobile(val: string): boolean {
  * @returns {boolean}
  */
 export function isEmail(val: string): boolean {
+  // eslint-disable-next-line no-useless-escape
   const reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
   return reg.test(val);
 }

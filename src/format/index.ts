@@ -6,9 +6,9 @@ import { isDate } from '../validate/index';
  * @export
  * @param {*} [date=new Date()] 时间
  * @param {string} [fmt='yyyy-MM-dd HH:mm:ss'] 显示格式
- * @returns
+ * @returns {string}
  */
-export function formatTime(initDate: any = new Date(), fmt = 'yyyy-MM-dd HH:mm:ss') {
+export function formatTime(initDate: any = new Date(), fmt = 'yyyy-MM-dd HH:mm:ss'): string {
   const date = new Date(initDate.replace(/-/g, '/'));
   if (!isDate(date)) {
     console.warn(`${initDate} is Invalid Date`);
@@ -46,7 +46,7 @@ export function formatTime(initDate: any = new Date(), fmt = 'yyyy-MM-dd HH:mm:s
  * @param {string} url 格式化的 url 值
  * @returns
  */
-export function getQueryObject(url: string) {
+export function getQueryObject(url: string): {[key: string]: any} {
   url = url === null ? window.location.href : url;
   const search = url.substring(url.lastIndexOf('?') + 1);
   const obj: {[key: string]: any} = {};
@@ -105,5 +105,5 @@ export function formatPhoneHide(phone: number | string): string {
  * @returns
  */
 export function formatBank(val: number | string): string {
-  return val.toString().replace(/\s/g, '').replace(/(.{4})/g, '$1 ');
+  return val.toString().replace(/\s/g, '').replace(/(.{4})/g, '$1 ').trim();
 }
