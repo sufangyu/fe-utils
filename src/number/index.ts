@@ -1,4 +1,10 @@
 /**
+ * @packageDocumentation
+ * @module Number(数字)
+ */
+
+
+/**
  * 数值千分位格式化
  *
  * @export

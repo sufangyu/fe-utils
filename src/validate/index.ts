@@ -1,4 +1,10 @@
 /**
+ * @packageDocumentation
+ * @module 值的校验
+ */
+
+
+/**
  * 是否是外部网址
  *
  * @export

@@ -1,3 +1,9 @@
+/**
+ * @packageDocumentation
+ * @module 格式化显示
+ */
+
+
 import { isDate } from '../validate/index';
 
 /**

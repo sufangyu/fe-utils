@@ -1,4 +1,10 @@
 /**
+ * @packageDocumentation
+ * @module Array(数组类)
+ */
+
+
+/**
  * 数组分割
  *
  * @export
