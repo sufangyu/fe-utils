@@ -1,0 +1,49 @@
+# action名称
+name: Push Release
+
+# 当代码合并到master分支的时候，执行下列脚本
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [  ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# 任务
+jobs:
+  # publish-npm 任务
+  publish-npm:
+    # 在ubuntu最新版本的虚拟机执行
+    runs-on: ubuntu-latest
+    # 设置变量
+    strategy:
+      matrix:
+        node-version: [ 12.x ]
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      # 检查并切换到master分支
+      - name: 检查master分支
+      	# 使用actions/checkout插件
+        uses: actions/checkout@master
+      
+      # 安装node
+      - name: 设置Node.js
+      	# 使用actions/setup-node插件
+        uses: actions/setup-node@master
+        with:
+        	# node版本
+          node-version: ${{ matrix.node-version }}
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
