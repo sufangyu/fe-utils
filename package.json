@@ -1,5 +1,5 @@
 {
-  "name": "fe-utils",
+  "name": "@sufangyu/fe-utils",
   "version": "1.0.0",
   "description": "front end utils",
   "main": "lib/index.umd.js",
