@@ -6,7 +6,7 @@ on:
   push:
     branches: [ master ]
   pull_request:
-    branches: [  ]
+    branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -15,35 +15,31 @@ on:
 jobs:
   # publish-npm 任务
   publish-npm:
-    # 在ubuntu最新版本的虚拟机执行
     runs-on: ubuntu-latest
     # 设置变量
     strategy:
       matrix:
         node-version: [ 12.x ]
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      
-      # 检查并切换到master分支
-      - name: 检查master分支
-      	# 使用actions/checkout插件
+      - name: Checkout master branch code
+        uses: actions/checkout@v2
+
+      - name: 检查 master 分支
         uses: actions/checkout@master
-      
-      # 安装node
-      - name: 设置Node.js
-      	# 使用actions/setup-node插件
+
+      # 安装 Node.js
+      - name: 设置 Node.js
+        # 使用actions/setup-node插件
         uses: actions/setup-node@master
         with:
-        	# node版本
+          # node版本
           node-version: ${{ matrix.node-version }}
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: 发布到 NPM
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          npm install
+          npm run build
+          npm publish --access public
+        env:
+            NODE_AUTH_TOKEN: ${{secrets.NPM_NODE_AUTH_TOKEN}}
